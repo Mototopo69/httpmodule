@@ -1,0 +1,28 @@
+<h2>Elenco CME (Coronal Mass Ejections)</h2>
+
+<table *ngIf="data && data.length > 0" border="1" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Latitudine</th>
+      <th>Longitudine</th>
+      <th>Velocità (km/s)</th>
+      <th>Angolo (°)</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let evento of data">
+      <td>{{ evento.time21_5 }}</td>
+      <td>{{ evento.latitude }}</td>
+      <td>{{ evento.longitude }}</td>
+      <td>{{ evento.speed }}</td>
+      <td>{{ evento.halfAngle }}</td>
+      <td>
+        <a [href]="evento.link" target="_blank">Dettagli</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="data && data.length === 0">Nessun dato disponibile.</p>
